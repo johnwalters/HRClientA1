@@ -1,8 +1,27 @@
-<p>
-  program works!
-</p>
-<table>
-  <tr *ngFor="let entry of entries">
-    <td>{{entry.postNumber}}</td>
-  </tr>
-</table>
+<div class="row">
+  <div class="col">
+      <table>
+          <tbody>
+            <tr>
+              <td>No.</td>
+              <td>Trainer</td>
+              <td>5 Min Odds</td>
+              <td>1 Min Odds</td>
+            </tr>
+          </tbody>
+          <tr *ngFor="let entry of entries">
+            <td>{{entry.postNumber}}</td>
+            <td><button  [ngClass]="{'btn-outline-success': entry.isTrainerGood, 'btn-outline-secondary': !entry.isTrainerGood}"
+              class="btn " (click)="toggleTrainer(entry)">Trainer</button>
+            </td>
+            <td>
+              <input type="text" class="odds" ([ngModel])="entry.fiveMinuteOdds.actual" />
+            </td>
+            <td>
+                <input type="text" class="odds" ([ngModel])="entry.oneMinuteOdds.actual" />
+              </td>
+          </tr>
+        </table>
+  </div>
+</div>
+

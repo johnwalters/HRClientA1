@@ -22,4 +22,8 @@ export class ProgramComponent implements OnInit {
     }
   }
 
+  toggleTrainer(entry: Entry) {
+    entry.isTrainerGood = !entry.isTrainerGood;
+  }
+
 }
