@@ -25,7 +25,7 @@ export class OddsManager {
     const resultingOdds = new Odds();
     const treatedDisplayed = displayed.trim();
     if (treatedDisplayed === '' || !treatedDisplayed) {
-      resultingOdds.actual = 3;
+      resultingOdds.actual = 5;
       resultingOdds.displayed = resultingOdds.actual.toString();
       return resultingOdds;
     }
@@ -55,7 +55,7 @@ export class OddsManager {
     const resultingOdds = new Odds();
     const treatedDisplayed = displayed.trim();
     if (treatedDisplayed === '' || !treatedDisplayed) {
-      resultingOdds.actual = 3;
+      resultingOdds.actual = 2;
       resultingOdds.displayed = resultingOdds.actual.toString();
       return resultingOdds;
     }

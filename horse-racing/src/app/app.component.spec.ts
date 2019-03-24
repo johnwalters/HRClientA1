@@ -89,20 +89,20 @@ describe('AppComponent', () => {
     const actual = oddsManager.getActual('testBadNumber');
     expect(actual).toBeNaN();
   }));
-  it('oddsManager should increment blank to 3', async(() => {
+  it('oddsManager should increment blank to 5', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const incremented = oddsManager.increment('');
-    expect(incremented.actual).toEqual(3);
-    expect(incremented.displayed).toEqual('3');
+    expect(incremented.actual).toEqual(5);
+    expect(incremented.displayed).toEqual('5');
   }));
-  it('oddsManager should decrement blank to 3', async(() => {
+  it('oddsManager should decrement blank to 2', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const decremented = oddsManager.decrement('');
-    expect(decremented.actual).toEqual(3);
-    expect(decremented.displayed).toEqual('3');
+    expect(decremented.actual).toEqual(2);
+    expect(decremented.displayed).toEqual('2');
   }));
 });
