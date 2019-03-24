@@ -3,10 +3,12 @@ import { KeyedCollection } from './keyedCollection';
 export class OddsManager {
 
   private actuals: KeyedCollection<number>;
+  private displayedOrdered: Array<string>;
   private floor = Math.floor;
 
   public constructor() {
     this.initActuals();
+    this.initDisplayed();
   }
 
   public getActual(displayed: string) {
@@ -24,9 +26,9 @@ export class OddsManager {
       if (treatedDisplayed === '9/2') {
           return 5;
       }
-      for (let keyIndex = 0; keyIndex <= this.actuals.Keys().length; keyIndex++) {
-        if (treatedDisplayed === this.actuals.Keys()[keyIndex]) {
-          const nextKey = this.actuals.Keys()[keyIndex + 1];
+      for (let keyIndex = 0; keyIndex <= this.displayedOrdered.length; keyIndex++) {
+        if (treatedDisplayed === this.displayedOrdered[keyIndex]) {
+          const nextKey = this.displayedOrdered[keyIndex + 1];
           return this.actuals.Item(nextKey);
         }
       }
@@ -42,9 +44,9 @@ export class OddsManager {
       if (treatedDisplayed === '1/5') {
           return .2;
       }
-      for (let keyIndex = 0; keyIndex <= this.actuals.Keys().length; keyIndex++) {
-        if (treatedDisplayed === this.actuals.Keys()[keyIndex]) {
-          const nextKey = this.actuals.Keys()[keyIndex - 1];
+      for (let keyIndex = 0; keyIndex <= this.displayedOrdered.length; keyIndex++) {
+        if (treatedDisplayed === this.displayedOrdered[keyIndex]) {
+          const nextKey = this.displayedOrdered[keyIndex - 1];
           return this.actuals.Item(nextKey);
         }
       }
@@ -71,5 +73,24 @@ export class OddsManager {
     this.actuals.Add('7/2', 3.5);
     this.actuals.Add('4', 4);
     this.actuals.Add('9/2', 4.5);
+  }
+
+  private initDisplayed() {
+    this.displayedOrdered = new Array<string>();
+    this.displayedOrdered.push('1/5');
+    this.displayedOrdered.push('2/5');
+    this.displayedOrdered.push('3/5');
+    this.displayedOrdered.push('4/5');
+    this.displayedOrdered.push('1');
+    this.displayedOrdered.push('6/5');
+    this.displayedOrdered.push('7/5');
+    this.displayedOrdered.push('8/5');
+    this.displayedOrdered.push('9/5');
+    this.displayedOrdered.push('2');
+    this.displayedOrdered.push('5/2');
+    this.displayedOrdered.push('3');
+    this.displayedOrdered.push('7/2');
+    this.displayedOrdered.push('4');
+    this.displayedOrdered.push('9/2');
   }
 }
