@@ -73,4 +73,11 @@ describe('AppComponent', () => {
     const decremented = oddsManager.decrement('26');
     expect(decremented).toEqual(25);
   }));
+  it('oddsManager should return NaN for a bad input', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const actual = oddsManager.getActual('testBadNumber');
+    expect(actual).toBeNaN();
+  }));
 });
