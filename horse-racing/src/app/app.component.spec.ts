@@ -35,43 +35,52 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
-    const three = oddsManager.increment('5/2');
-    expect(three).toEqual(3);
+    const increment = oddsManager.increment('5/2');
+    expect(increment.actual).toEqual(3);
+    expect(increment.displayed).toEqual('3');
   }));
   it('oddsManager should decrement 9/2 to 4', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const four = oddsManager.decrement('9/2');
-    expect(four).toEqual(4);
+    expect(four.actual).toEqual(4);
   }));
   it('oddsManager should increment 9/2 to 5', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const incremented = oddsManager.increment('9/2');
-    expect(incremented).toEqual(5);
+    expect(incremented.actual).toEqual(5);
+  }));
+  it('oddsManager should increment 4 to 7/2', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const decremented = oddsManager.decrement('4');
+    expect(decremented.actual).toEqual(3.5);
+    expect(decremented.displayed).toEqual('7/2');
   }));
   it('oddsManager should not decrement 1/5', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const decremented = oddsManager.decrement('1/5');
-    expect(decremented).toEqual(.2);
+    expect(decremented.actual).toEqual(.2);
   }));
   it('oddsManager should decrement 6 to 5', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const decremented = oddsManager.decrement('6');
-    expect(decremented).toEqual(5);
+    expect(decremented.actual).toEqual(5);
   }));
   it('oddsManager should decrement 26 to 25', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const decremented = oddsManager.decrement('26');
-    expect(decremented).toEqual(25);
+    expect(decremented.actual).toEqual(25);
   }));
   it('oddsManager should return NaN for a bad input', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -79,5 +88,21 @@ describe('AppComponent', () => {
     const oddsManager = new OddsManager();
     const actual = oddsManager.getActual('testBadNumber');
     expect(actual).toBeNaN();
+  }));
+  it('oddsManager should increment blank to 3', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const incremented = oddsManager.increment('');
+    expect(incremented.actual).toEqual(3);
+    expect(incremented.displayed).toEqual('3');
+  }));
+  it('oddsManager should decrement blank to 3', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const decremented = oddsManager.decrement('');
+    expect(decremented.actual).toEqual(3);
+    expect(decremented.displayed).toEqual('3');
   }));
 });

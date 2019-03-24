@@ -1,4 +1,5 @@
 import { KeyedCollection } from './keyedCollection';
+import { Odds } from './odds';
 
 export class OddsManager {
 
@@ -20,39 +21,63 @@ export class OddsManager {
     }
   }
 
-  public increment(displayed: string): number {
+  public increment(displayed: string): Odds {
+    const resultingOdds = new Odds();
     const treatedDisplayed = displayed.trim();
+    if (treatedDisplayed === '' || !treatedDisplayed) {
+      resultingOdds.actual = 3;
+      resultingOdds.displayed = resultingOdds.actual.toString();
+      return resultingOdds;
+    }
     if (this.actuals.ContainsKey(treatedDisplayed)) {
       if (treatedDisplayed === '9/2') {
-          return 5;
+        resultingOdds.actual = 5;
+        resultingOdds.displayed = resultingOdds.actual.toString();
+        return resultingOdds;
       }
       for (let keyIndex = 0; keyIndex <= this.displayedOrdered.length; keyIndex++) {
         if (treatedDisplayed === this.displayedOrdered[keyIndex]) {
           const nextKey = this.displayedOrdered[keyIndex + 1];
-          return this.actuals.Item(nextKey);
+          resultingOdds.actual = this.actuals.Item(nextKey);
+          resultingOdds.displayed = nextKey;
+          return resultingOdds;
         }
       }
     } else {
       const actual = this.floor(parseFloat(treatedDisplayed));
-      return actual + 1;
+      resultingOdds.actual = actual + 1;
+      resultingOdds.displayed = resultingOdds.actual.toString();
+      return resultingOdds;
     }
   }
 
-  public decrement(displayed: string): number {
+  public decrement(displayed: string): Odds {
+    const resultingOdds = new Odds();
     const treatedDisplayed = displayed.trim();
+    if (treatedDisplayed === '' || !treatedDisplayed) {
+      resultingOdds.actual = 3;
+      resultingOdds.displayed = resultingOdds.actual.toString();
+      return resultingOdds;
+    }
     if (this.actuals.ContainsKey(treatedDisplayed)) {
       if (treatedDisplayed === '1/5') {
-          return .2;
+        resultingOdds.actual = .2;
+        resultingOdds.displayed = '1/5';
+        return resultingOdds;
       }
       for (let keyIndex = 0; keyIndex <= this.displayedOrdered.length; keyIndex++) {
         if (treatedDisplayed === this.displayedOrdered[keyIndex]) {
           const nextKey = this.displayedOrdered[keyIndex - 1];
-          return this.actuals.Item(nextKey);
+          resultingOdds.actual = this.actuals.Item(nextKey);
+          resultingOdds.displayed = nextKey;
+          return resultingOdds;
         }
       }
     } else {
       const actual = this.floor(parseFloat(treatedDisplayed));
-      return actual - 1;
+      resultingOdds.actual = actual - 1;
+      resultingOdds.displayed = resultingOdds.actual.toString();
+      return resultingOdds;
     }
   }
 
