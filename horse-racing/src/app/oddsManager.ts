@@ -23,6 +23,9 @@ export class OddsManager {
 
   public increment(displayed: string): Odds {
     const resultingOdds = new Odds();
+    if (!displayed) {
+      displayed = '';
+    }
     const treatedDisplayed = displayed.trim();
     if (treatedDisplayed === '' || !treatedDisplayed) {
       resultingOdds.actual = 5;
@@ -53,6 +56,9 @@ export class OddsManager {
 
   public decrement(displayed: string): Odds {
     const resultingOdds = new Odds();
+    if (!displayed) {
+      displayed = '';
+    }
     const treatedDisplayed = displayed.trim();
     if (treatedDisplayed === '' || !treatedDisplayed) {
       resultingOdds.actual = 2;

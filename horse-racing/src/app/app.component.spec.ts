@@ -97,11 +97,27 @@ describe('AppComponent', () => {
     expect(incremented.actual).toEqual(5);
     expect(incremented.displayed).toEqual('5');
   }));
+  it('oddsManager should increment null to 5', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const incremented = oddsManager.increment(null);
+    expect(incremented.actual).toEqual(5);
+    expect(incremented.displayed).toEqual('5');
+  }));
   it('oddsManager should decrement blank to 2', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const oddsManager = new OddsManager();
     const decremented = oddsManager.decrement('');
+    expect(decremented.actual).toEqual(2);
+    expect(decremented.displayed).toEqual('2');
+  }));
+  it('oddsManager should decrement null to 2', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const decremented = oddsManager.decrement(null);
     expect(decremented.actual).toEqual(2);
     expect(decremented.displayed).toEqual('2');
   }));

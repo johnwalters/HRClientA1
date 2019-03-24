@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from '../entry';
+import { OddsManager } from '../oddsManager';
 
 @Component({
   selector: 'app-program',
@@ -9,10 +10,13 @@ import { Entry } from '../entry';
 export class ProgramComponent implements OnInit {
 
   entries: Entry[];
+  oddsManager: OddsManager;
+
   constructor() { }
 
   ngOnInit() {
     this.initEntries();
+    this.oddsManager = new OddsManager();
   }
 
   initEntries() {
@@ -24,6 +28,28 @@ export class ProgramComponent implements OnInit {
 
   toggleTrainer(entry: Entry) {
     entry.isTrainerGood = !entry.isTrainerGood;
+  }
+
+  incrementOdds(entry: Entry, isFiveMinute: boolean) {
+    if (isFiveMinute) {
+      entry.fiveMinuteOdds = this.oddsManager.increment(entry.fiveMinuteOdds.displayed);
+    } else {
+      entry.oneMinuteOdds = this.oddsManager.increment(entry.oneMinuteOdds.displayed);
+    }
+  }
+
+  decrementOdds(entry: Entry, isFiveMinute: boolean) {
+    if (isFiveMinute) {
+      entry.fiveMinuteOdds = this.oddsManager.decrement(entry.fiveMinuteOdds.displayed);
+    } else {
+      entry.oneMinuteOdds = this.oddsManager.decrement(entry.oneMinuteOdds.displayed);
+    }
+  }
+
+  copyOdds() {
+    for (const odds of this.entries) {
+      odds.oneMinuteOdds = odds.fiveMinuteOdds;
+    }
   }
 
 }
