@@ -20,6 +20,7 @@ export class Entry {
   public liveOdds: Odds;
   public finalOdds: Odds;
   public isScratched: boolean;
+  public isBet: boolean;
 
   public constructor(postNumber: number) {
     this.postNumber = postNumber;

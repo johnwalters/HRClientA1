@@ -12,6 +12,7 @@
               <td>Trainer</td>
               <td>5 Min Odds</td>
               <td>1 Min Odds</td>
+              <td>Pick</td>
             </tr>
           </tbody>
           <tr *ngFor="let entry of entries">
@@ -34,6 +35,10 @@
               class="btn btn-sm btn-outline-secondary ml-1 " (click)="incrementOdds(entry, false)"><i class="fas fa-caret-up"></i></button>
               <button
               class="btn btn-sm btn-outline-secondary ml-1" (click)="decrementOdds(entry, false)"><i class="fas fa-caret-down"></i></button>
+              </td>
+
+            <td>
+              <span *ngIf="oddsMethodItem(entry)">{{oddsMethodItem(entry).isBet}}</span>
               </td>
           </tr>
         </table>

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Entry } from '../entry';
 import { OddsManager } from '../oddsManager';
+import { OddsMethod } from '../oddsMethod';
+import { KeyedCollection } from '../keyedCollection';
+import { OddsMethodItem } from '../oddsMethodItem';
 
 @Component({
   selector: 'app-program',
@@ -11,12 +14,16 @@ export class ProgramComponent implements OnInit {
 
   entries: Entry[];
   oddsManager: OddsManager;
+  oddsMethod: OddsMethod;
+  oddsMethodResults: KeyedCollection<OddsMethodItem>;
 
   constructor() { }
 
   ngOnInit() {
     this.initEntries();
     this.oddsManager = new OddsManager();
+    this.oddsMethod = new OddsMethod();
+    this.oddsMethodResults = new KeyedCollection<OddsMethodItem>();
   }
 
   initEntries() {
@@ -35,6 +42,7 @@ export class ProgramComponent implements OnInit {
       entry.fiveMinuteOdds = this.oddsManager.increment(entry.fiveMinuteOdds.displayed);
     } else {
       entry.oneMinuteOdds = this.oddsManager.increment(entry.oneMinuteOdds.displayed);
+      this.callOddsMethod();
     }
   }
 
@@ -43,6 +51,7 @@ export class ProgramComponent implements OnInit {
       entry.fiveMinuteOdds = this.oddsManager.decrement(entry.fiveMinuteOdds.displayed);
     } else {
       entry.oneMinuteOdds = this.oddsManager.decrement(entry.oneMinuteOdds.displayed);
+      this.callOddsMethod();
     }
   }
 
@@ -50,6 +59,14 @@ export class ProgramComponent implements OnInit {
     for (const odds of this.entries) {
       odds.oneMinuteOdds = odds.fiveMinuteOdds;
     }
+  }
+
+  callOddsMethod() {
+    this.oddsMethodResults = this.oddsMethod.apply(this.entries);
+  }
+
+  oddsMethodItem(entry: Entry) {
+    return this.oddsMethodResults.Item(entry.postNumber.toString());
   }
 
 }

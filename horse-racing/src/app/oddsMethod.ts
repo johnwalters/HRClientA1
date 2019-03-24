@@ -21,8 +21,13 @@ export class OddsMethod {
       this.items.push(new OddsMethodItem(entry));
     }
     // sort, note top 6
-    // TODO: need sortable odds (zero padded)
-    this.items = _.sortBy(this.items, function(item: OddsMethodItem) { return item.entry.fiveMinuteOdds.displayed; });
+    const self = this;
+    this.items = _.sortBy(this.items, function(item: OddsMethodItem) {
+      if (!item.entry.fiveMinuteOdds.actual) return null;
+      // tslint:disable-next-line:max-line-length
+      const sortable = item.entry.fiveMinuteOdds.actual.toLocaleString('en', {minimumIntegerDigits: 5, minimumFractionDigits: 2, useGrouping: false});
+      return sortable;
+    });
     let top6Index = 1;
     let isFavoriteNoted = false;
     let nonBettingFavoriteWentDown = false;
@@ -50,12 +55,14 @@ export class OddsMethod {
         if (!item.isTopSix) continue;
         if (item.wentDown) {
           item.isBet = true;
+          item.entry.isBet = true;
           nonBettingFavoriteWentDown = true;
         }
       }
       if (nonBettingFavoriteWentDown === false) {
         // favorite is the bet
         bettingFavorite.isBet = true;
+        bettingFavorite.entry.isBet = true;
       }
     }
 
@@ -66,6 +73,22 @@ export class OddsMethod {
 
     return this.indexedItems;
   }
+
+   sortableOdds( odds: number ) {
+    const sortable = odds.toLocaleString('en', {minimumIntegerDigits: 5, minimumFractionDigits: 2, useGrouping: false});
+    // console.log('sortable: ' + odds + ' - ' + sortable);
+    // return sortable;
+  }
+
+// sortableOdds( odds:number, width:number )
+// {
+//   width -= odds.toString().length;
+//   if ( width > 0 )
+//   {
+//     return new Array( width + (/\./.test( odds ) ? 2 : 1) ).join( '0' ) + odds;
+//   }
+//   return odds + ''; // always return a string
+// }
 }
 
 
