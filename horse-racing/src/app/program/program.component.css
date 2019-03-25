@@ -8,10 +8,12 @@ span.post-number.trainer-odds-pick {
   border: 2px solid green;
   border-radius: 5px;
   font-weight: bold;
+  padding:.5em;
 }
 
 span.post-number.odds-pick {
   border: 2px solid blue;
   border-radius: 5px;
   font-weight: bold;
+  padding:.5em;
 }

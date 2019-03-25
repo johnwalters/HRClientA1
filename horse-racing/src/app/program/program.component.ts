@@ -62,6 +62,7 @@ export class ProgramComponent implements OnInit {
     for (const odds of this.entries) {
       odds.oneMinuteOdds = odds.fiveMinuteOdds;
     }
+    this.callOddsMethod();
   }
 
   callOddsMethod() {

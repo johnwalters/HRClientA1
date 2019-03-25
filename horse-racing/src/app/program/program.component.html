@@ -1,52 +1,110 @@
 <div class="row">
   <div class="col">
-    <button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">Copy</button>
-    <button class="btn btn-sm btn-outline-danger  " (click)="testSetup()">Setup</button>
+    <button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">
+      Copy
+    </button>
+  </div>
+  <div class="col text-right mr-1">
+    <button class="btn btn-sm btn-outline-danger  " (click)="testSetup()">
+      Test Data
+    </button>
   </div>
 </div>
 <div class="row">
   <div class="col">
-      <table>
-          <tbody>
-            <tr>
-              <td>No.</td>
-              <td>Trainer</td>
-              <td>5 Min Odds</td>
-              <td>1 Min Odds</td>
-              <td>No.</td>
-            </tr>
-          </tbody>
-          <tr *ngFor="let entry of entries">
-            <td>{{entry.postNumber}}</td>
-            <td>
-              <button  [ngClass]="{'btn-warning': entry.isTrainerGood, 'btn-outline-secondary': !entry.isTrainerGood}"
-              class="btn btn-sm" (click)="toggleTrainer(entry)">
-              <i class="fas fa-male"></i></button>
-            </td>
-            <td>
-              <input type="text" class="odds" [(ngModel)]="entry.fiveMinuteOdds.displayed" />
-              <button
-              class="btn btn-sm btn-outline-secondary ml-1 " (click)="incrementOdds(entry, true)"><i class="fas fa-caret-up"></i></button>
-              <button
-              class="btn btn-sm btn-outline-secondary ml-1" (click)="decrementOdds(entry, true)"><i class="fas fa-caret-down"></i></button>
-            </td>
-            <td>
-                <input type="text" class="odds ml-2" [(ngModel)]="entry.oneMinuteOdds.displayed" />
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>No.</td>
+          <td>Trainer</td>
+          <td>5 Min Odds</td>
+          <td>1 Min Odds</td>
+          <td>No.</td>
+        </tr>
+      </tbody>
+      <tr *ngFor="let entry of entries">
+        <td>{{ entry.postNumber }}</td>
+        <td>
+          <button
+            [ngClass]="{
+              'btn-warning': entry.isTrainerGood,
+              'btn-outline-secondary': !entry.isTrainerGood
+            }"
+            class="btn btn-sm"
+            (click)="toggleTrainer(entry)"
+          >
+            <i class="fas fa-male"></i>
+          </button>
+        </td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                class="odds"
+                [(ngModel)]="entry.fiveMinuteOdds.displayed"
+              />
+            </div>
+            <div class="col">
+              <span class="btn-container">
                 <button
-              class="btn btn-sm btn-outline-secondary ml-1 " (click)="incrementOdds(entry, false)"><i class="fas fa-caret-up"></i></button>
-              <button
-              class="btn btn-sm btn-outline-secondary ml-1" (click)="decrementOdds(entry, false)"><i class="fas fa-caret-down"></i></button>
-              </td>
+                  class="btn btn-sm btn-outline-secondary ml-1 "
+                  (click)="incrementOdds(entry, true)"
+                >
+                  <i class="fas fa-plus"></i></button
+                ><br />
+                <button
+                  class="btn btn-sm btn-outline-secondary ml-1"
+                  (click)="decrementOdds(entry, true)"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </td>
+        <td>
+          <div class="row">
+            <div class="col">
+              <input
+                type="text"
+                class="odds ml-2"
+                [(ngModel)]="entry.oneMinuteOdds.displayed"
+              />
+            </div>
+            <div class="col">
+              <span class="btn-container">
+                <button
+                  class="btn btn-sm btn-outline-secondary ml-1 "
+                  (click)="incrementOdds(entry, false)"
+                >
+                  <i class="fas fa-plus"></i></button
+                ><br />
+                <button
+                  class="btn btn-sm btn-outline-secondary ml-1"
+                  (click)="decrementOdds(entry, false)"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+              </span>
+            </div>
+          </div>
+        </td>
 
-              <td>
-                    <span class="post-number ml-2 " *ngIf="oddsMethodItem(entry)"
-                    [class.trainer-odds-pick]= "oddsMethodItem(entry).isBet && entry.isTrainerGood"
-                    [class.odds-pick]= "oddsMethodItem(entry).isBet && !entry.isTrainerGood "
-
-                    >{{entry.postNumber}}</span>
-              </td>
-          </tr>
-        </table>
+        <td>
+          <span
+            class="post-number ml-2 "
+            *ngIf="oddsMethodItem(entry)"
+            [class.trainer-odds-pick]="
+              oddsMethodItem(entry).isBet && entry.isTrainerGood
+            "
+            [class.odds-pick]="
+              oddsMethodItem(entry).isBet && !entry.isTrainerGood
+            "
+            >{{ entry.postNumber }}</span
+          >
+        </td>
+      </tr>
+    </table>
   </div>
 </div>
-
