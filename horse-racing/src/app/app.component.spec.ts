@@ -121,4 +121,12 @@ describe('AppComponent', () => {
     expect(decremented.actual).toEqual(2);
     expect(decremented.displayed).toEqual('2');
   }));
+  it('oddsManager should return odds of 2/5 for actual .4', async(() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const oddsManager = new OddsManager();
+    const odds = oddsManager.getOddsFromActual(.4);
+    expect(odds).toBeTruthy();
+    expect(odds.displayed).toEqual('2/5');
+  }));
 });

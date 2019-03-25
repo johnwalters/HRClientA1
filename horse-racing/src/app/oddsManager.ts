@@ -4,6 +4,7 @@ import { Odds } from './odds';
 export class OddsManager {
 
   private actuals: KeyedCollection<number>;
+  private displayed: KeyedCollection<string>;
   private displayedOrdered: Array<string>;
   private floor = Math.floor;
 
@@ -19,6 +20,22 @@ export class OddsManager {
     } else {
       return this.floor(parseFloat(treatedDisplayed));
     }
+  }
+
+  public getOddsFromActual(actual: number): Odds {
+    const displayedValue = this.displayed.Item(actual.toString());
+    if (displayedValue) {
+      const odds = new Odds();
+      odds.actual = actual;
+      odds.displayed = displayedValue;
+      return odds;
+    } else {
+      const odds = new Odds();
+      odds.actual = actual;
+      odds.displayed = actual.toString();
+      return odds;
+    }
+    return null;
   }
 
   public increment(displayed: string): Odds {
@@ -104,6 +121,23 @@ export class OddsManager {
     this.actuals.Add('7/2', 3.5);
     this.actuals.Add('4', 4);
     this.actuals.Add('9/2', 4.5);
+
+    this.displayed = new KeyedCollection<string>();
+    this.displayed.Add(.2.toString(), '1/5');
+    this.displayed.Add(.4.toString(), '2/5');
+    this.displayed.Add(.6.toString(), '3/5');
+    this.displayed.Add( .8.toString(), '4/5');
+    this.displayed.Add( 1.0.toString(), '1');
+    this.displayed.Add( 1.2.toString(), '6/5');
+    this.displayed.Add( 1.4.toString(), '7/5');
+    this.displayed.Add( 1.6.toString(), '8/5');
+    this.displayed.Add( 1.8.toString(), '9/5');
+    this.displayed.Add( 2.0.toString(), '2');
+    this.displayed.Add( 2.5.toString(), '5/2');
+    this.displayed.Add(3.0.toString(), '3');
+    this.displayed.Add( 3.5.toString(), '7/2');
+    this.displayed.Add( 4.0.toString(), '4');
+    this.displayed.Add( 4.5.toString(), '9/2');
   }
 
   private initDisplayed() {

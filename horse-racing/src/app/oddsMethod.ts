@@ -23,7 +23,8 @@ export class OddsMethod {
     // sort, note top 6
     const self = this;
     this.items = _.sortBy(this.items, function(item: OddsMethodItem) {
-      if (!item.entry.fiveMinuteOdds.actual) return null;
+      if (!item.entry.fiveMinuteOdds) return '999.99';
+      if (!item.entry.fiveMinuteOdds.actual) return '999.99';
       // tslint:disable-next-line:max-line-length
       const sortable = item.entry.fiveMinuteOdds.actual.toLocaleString('en', {minimumIntegerDigits: 5, minimumFractionDigits: 2, useGrouping: false});
       return sortable;
@@ -39,6 +40,7 @@ export class OddsMethod {
         item.isFavorite = true;
         isFavoriteNoted = true;
       }
+      if (item.entry.fiveMinuteOdds && item.entry.oneMinuteOdds) {
       if (item.entry.fiveMinuteOdds.actual > item.entry.oneMinuteOdds.actual) {
         item.wentDown = true;
         item.wentUp = false;
@@ -47,6 +49,7 @@ export class OddsMethod {
         item.wentDown = false;
         item.wentUp = true;
       }
+    }
       top6Index = top6Index + 1;
       if (top6Index > 6) break;
     }
@@ -56,13 +59,19 @@ export class OddsMethod {
         if (item.wentDown) {
           item.isBet = true;
           item.entry.isBet = true;
-          nonBettingFavoriteWentDown = true;
+          if (!item.isFavorite) {
+            nonBettingFavoriteWentDown = true;
+          }
         }
       }
       if (nonBettingFavoriteWentDown === false) {
         // favorite is the bet
         bettingFavorite.isBet = true;
         bettingFavorite.entry.isBet = true;
+      } else {
+          // favorite is not the bet
+          bettingFavorite.isBet = false;
+          bettingFavorite.entry.isBet = false;
       }
     }
 

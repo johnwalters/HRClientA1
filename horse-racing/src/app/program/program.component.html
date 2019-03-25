@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col">
     <button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">Copy</button>
+    <button class="btn btn-sm btn-outline-danger  " (click)="testSetup()">Setup</button>
   </div>
 </div>
 <div class="row">
@@ -12,13 +13,13 @@
               <td>Trainer</td>
               <td>5 Min Odds</td>
               <td>1 Min Odds</td>
-              <td>Pick</td>
+              <td>No.</td>
             </tr>
           </tbody>
           <tr *ngFor="let entry of entries">
             <td>{{entry.postNumber}}</td>
             <td>
-              <button  [ngClass]="{'btn-success': entry.isTrainerGood, 'btn-outline-secondary': !entry.isTrainerGood}"
+              <button  [ngClass]="{'btn-warning': entry.isTrainerGood, 'btn-outline-secondary': !entry.isTrainerGood}"
               class="btn btn-sm" (click)="toggleTrainer(entry)">
               <i class="fas fa-male"></i></button>
             </td>
@@ -37,8 +38,12 @@
               class="btn btn-sm btn-outline-secondary ml-1" (click)="decrementOdds(entry, false)"><i class="fas fa-caret-down"></i></button>
               </td>
 
-            <td>
-              <span *ngIf="oddsMethodItem(entry)">{{oddsMethodItem(entry).isBet}}</span>
+              <td>
+                    <span class="post-number ml-2 " *ngIf="oddsMethodItem(entry)"
+                    [class.trainer-odds-pick]= "oddsMethodItem(entry).isBet && entry.isTrainerGood"
+                    [class.odds-pick]= "oddsMethodItem(entry).isBet && !entry.isTrainerGood "
+
+                    >{{entry.postNumber}}</span>
               </td>
           </tr>
         </table>

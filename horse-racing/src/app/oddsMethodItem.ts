@@ -8,5 +8,10 @@ export class OddsMethodItem {
   public entry: Entry;
   public constructor(entry: Entry) {
     this.entry = entry;
+    this.isFavorite = false;
+    this.isTopSix = false;
+    this.wentDown = false;
+    this.wentUp = false;
+    this.isBet = false;
   }
 }
