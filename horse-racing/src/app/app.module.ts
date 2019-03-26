@@ -8,6 +8,7 @@ import { RaceListComponent } from './race-list/race-list.component';
 import { RaceServiceTestsComponent } from './test/race-service-tests/race-service-tests.component';
 import { AddRaceModalComponent } from './add-race-modal/add-race-modal.component';
 import { ModalTemplateComponent } from './modal-template.component';
+import { DeleteRaceModalComponent } from './delete-race-modal/delete-race-modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ModalTemplateComponent } from './modal-template.component';
     RaceServiceTestsComponent,
     AddRaceModalComponent,
     ModalTemplateComponent,
+    DeleteRaceModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,18 +16,37 @@
                     <td>Date</td>
                     <td>Race Number</td>
                     <td>Entries</td>
+                    <td>Action</td>
                   </tr>
                 </tbody>
                 <tr *ngFor="let race of races()">
-                  <td>{{ race.track }}</td>
-                  <td>{{ race.date }}</td>
+                  <td>
+                      <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
+                        {{ race.track }}
+                      </a>
+                  </td>
+                  <td>
+                      <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
+                        {{ race.date }}
+                      </a>
+                  </td>
                   <td>
                       <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
                         {{ race.number }}
                       </a>
 
                   </td>
-                  <td>{{ race.entries.length }}</td>
+                  <td>
+                      <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
+                        {{ race.entries.length }}
+                      </a>
+                  </td>
+                  <td>
+                    <app-delete-race-modal
+                      [raceToDelete] = "race"
+                      (raceDeleted) = "raceDeleted($event)"
+                    ></app-delete-race-modal>
+                  </td>
                   </tr>
                   </table>
         </div>

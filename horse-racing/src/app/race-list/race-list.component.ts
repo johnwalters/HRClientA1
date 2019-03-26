@@ -24,4 +24,8 @@ export class RaceListComponent implements OnInit {
     return this.service.getAllRaces();
   }
 
+  raceDeleted(message: any): void {
+    // should not have to do anything
+  }
+
 }

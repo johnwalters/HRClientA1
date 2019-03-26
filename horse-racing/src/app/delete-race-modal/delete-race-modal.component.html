@@ -1,0 +1,23 @@
+<button type="button" class="btn btn-outline-danger btn-sm" (click)="openModal()">Delete</button>
+  <div class="backdrop" *ngIf="isOpen" ></div>
+  <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title">Confirm Delete Race</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col">
+
+                  <button type="button" class="btn btn-danger" (click)="deleteRace()" >Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
