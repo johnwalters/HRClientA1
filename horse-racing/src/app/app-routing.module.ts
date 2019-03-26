@@ -5,7 +5,7 @@ import { RaceServiceTestsComponent } from './test/race-service-tests/race-servic
 import { RaceListComponent } from './race-list/race-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'program', pathMatch: 'full' },
+  { path: '', redirectTo: 'races', pathMatch: 'full' },
   { path: 'program', component: ProgramComponent },
   { path: 'race/:track/:date/:number', component: ProgramComponent },
   { path: 'races', component: RaceListComponent },
