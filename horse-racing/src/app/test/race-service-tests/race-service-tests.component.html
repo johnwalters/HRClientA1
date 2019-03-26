@@ -1,3 +1,33 @@
-<p>
-  race-service-tests works!
-</p>
+<div class="row">
+  <div class="col">
+    <button class="btn btn-sm btn-outline-info  " (click)="runTests()">
+      Run Tests
+    </button>
+  </div>
+</div>
+  <div class="row">
+    <div class="col">
+      {{log}}
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+          <table class="table">
+              <tbody>
+                <tr>
+                  <td>Track</td>
+                  <td>Date</td>
+                  <td>Race Number</td>
+                  <td>Entries</td>
+                </tr>
+              </tbody>
+              <tr *ngFor="let race of races()">
+                <td>{{ race.track }}</td>
+                <td>{{ race.date }}</td>
+                <td>{{ race.number }}</td>
+                <td>{{ race.entries.length }}</td>
+                </tr>
+                </table>
+      </div>
+    </div>
+

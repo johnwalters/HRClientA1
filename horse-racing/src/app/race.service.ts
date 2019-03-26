@@ -36,22 +36,32 @@ export class RaceService {
     this.saveRaces();
   }
 
-  public getRace(track: string, date: Date, number: number): Race {
+  public getRace(track: string, date: string, number: number): Race {
     const key = this.getItemKey(track, date, number);
     return this.keyedRaces.Item(key);
   }
 
-  public getAllRaces(t): Race[] {
+  public getAllRaces(): Race[] {
     const allRaces = this.keyedRaces.Values();
     return allRaces;
+  }
+
+  public deleteRace(track: string, date: string, number: number): void {
+    const key = this.getItemKey(track, date, number);
+    this.keyedRaces.Remove(key);
+    this.saveRaces();
+  }
+
+  public clearMemory(): void {
+    this._keyedRaces = null;
   }
 
   private saveRaces() {
     this.localStorageService.writeObject('hr_races', this._keyedRaces.Values());
   }
 
-  private getItemKey(track: string, date: Date, number: number): string {
-    const key = track + '_' + date.toDateString() + '_' + number.toString();
+  private getItemKey(track: string, date: string, number: number): string {
+    const key = track + '_' + date + '_' + number.toString();
     return key;
   }
 
