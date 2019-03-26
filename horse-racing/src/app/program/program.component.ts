@@ -5,6 +5,8 @@ import { OddsMethod } from '../oddsMethod';
 import { KeyedCollection } from '../keyedCollection';
 import { OddsMethodItem } from '../oddsMethodItem';
 import { Race } from '../race';
+import { RaceService } from '../race.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-program',
@@ -18,8 +20,12 @@ export class ProgramComponent implements OnInit {
   oddsManager: OddsManager;
   oddsMethod: OddsMethod;
   oddsMethodResults: KeyedCollection<OddsMethodItem>;
+  private parameterSubscription: any;
 
-  constructor() { }
+  constructor(
+    private raceService: RaceService,
+    private route: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
     this.race = new Race();
@@ -27,7 +33,12 @@ export class ProgramComponent implements OnInit {
     this.oddsManager = new OddsManager();
     this.oddsMethod = new OddsMethod();
     this.oddsMethodResults = new KeyedCollection<OddsMethodItem>();
-    // this.testSetup();
+    this.parameterSubscription = this.route.params.subscribe(params => {
+      const track = params['track'];
+      const date = params['date'];
+      const number = params['number'];
+      this.race = this.raceService.getRace(track, date, number);
+    });
   }
 
   initEntries() {

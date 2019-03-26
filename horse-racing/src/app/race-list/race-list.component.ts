@@ -9,7 +9,6 @@ import { RaceService } from '../race.service';
 })
 export class RaceListComponent implements OnInit {
 
-  races: Race[];
 
   constructor(private service: RaceService) { }
 
@@ -19,6 +18,10 @@ export class RaceListComponent implements OnInit {
 
   promptToAddRace() {
 
+  }
+
+  races(): Race[] {
+    return this.service.getAllRaces();
   }
 
 }

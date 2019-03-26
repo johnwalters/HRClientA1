@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RaceService } from 'src/app/race.service';
 import { Race } from 'src/app/race';
 import { Entry } from 'src/app/entry';
-import * as moment from 'moment';
+import { Utilities } from 'src/app/utilities';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class RaceServiceTestsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.todayMDY = moment(new Date()).format('MM-DD-YY');
+    this.todayMDY = Utilities.getTodayMMDDYY();
   }
 
   runTests(): void {
@@ -48,10 +48,18 @@ export class RaceServiceTestsComponent implements OnInit {
     race.date = this.todayMDY;
     race.number = number;
     race.entries = new Array<Entry>();
-    const entry1 = new Entry(1);
-    race.entries.push(entry1);
-    const entry2 = new Entry(2);
-    race.entries.push(entry2);
+    race.entries.push(new Entry(1));
+    race.entries.push(new Entry(2));
+    race.entries.push(new Entry(3));
+    race.entries.push(new Entry(4));
+    race.entries.push(new Entry(5));
+    race.entries.push(new Entry(6));
+    race.entries.push(new Entry(7));
+    race.entries.push(new Entry(8));
+    race.entries.push(new Entry(9));
+    race.entries.push(new Entry(10));
+    race.entries.push(new Entry(11));
+    race.entries.push(new Entry(12));
     return race;
   }
 
