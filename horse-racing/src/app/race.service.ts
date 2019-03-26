@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Race } from './race';
 import { LocalStorageService } from './local-storage.service';
 import { KeyedCollection } from './keyedCollection';
+import { Entry } from './entry';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,29 @@ export class RaceService {
 
   }
 
+  public static createRace(track: string, date: string, number: number): Race {
+    const race = new Race();
+    race.track = track;
+    race.date = date;
+    race.number = number;
+    race.entries = new Array<Entry>();
+    race.entries.push(new Entry(1));
+    race.entries.push(new Entry(2));
+    race.entries.push(new Entry(3));
+    race.entries.push(new Entry(4));
+    race.entries.push(new Entry(5));
+    race.entries.push(new Entry(6));
+    race.entries.push(new Entry(7));
+    race.entries.push(new Entry(8));
+    race.entries.push(new Entry(9));
+    race.entries.push(new Entry(10));
+    race.entries.push(new Entry(11));
+    race.entries.push(new Entry(12));
+    race.entries.push(new Entry(13));
+    race.entries.push(new Entry(14));
+    race.entries.push(new Entry(15));
+    return race;
+  }
 
   public setRace(race: Race) {
     const key = this.getItemKeyFromRace(race);

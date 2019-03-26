@@ -6,13 +6,17 @@ import { ProgramComponent } from './program/program.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RaceListComponent } from './race-list/race-list.component';
 import { RaceServiceTestsComponent } from './test/race-service-tests/race-service-tests.component';
+import { AddRaceModalComponent } from './add-race-modal/add-race-modal.component';
+import { ModalTemplateComponent } from './modal-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProgramComponent,
     RaceListComponent,
-    RaceServiceTestsComponent
+    RaceServiceTestsComponent,
+    AddRaceModalComponent,
+    ModalTemplateComponent,
   ],
   imports: [
     BrowserModule,

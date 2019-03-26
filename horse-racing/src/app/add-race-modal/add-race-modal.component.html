@@ -1,0 +1,33 @@
+<button type="button" class="btn btn-info btn-sm" (click)="openModal()">Add Race</button>
+  <div class="backdrop" *ngIf="isOpen" ></div>
+  <div class="modal" tabindex="-1" role="dialog"  [ngStyle]="{'display':display}">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <h4 class="modal-title">Add Race</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+              <div class="col">
+                Track: <input type="text" [(ngModel)]="track">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                Date: <input type="text" [(ngModel)]="date">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                Number: <input type="text" [(ngModel)]="number">
+              </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="onCloseHandled()" >Cancel</button>
+          <button type="button" class="btn btn-default" (click)="addRace()" >Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
