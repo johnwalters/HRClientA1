@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ProgramComponent } from './program/program.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RaceListComponent } from './race-list/race-list.component';
+import { RaceServiceTestsComponent } from './test/race-service-tests/race-service-tests.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProgramComponent
+    ProgramComponent,
+    RaceListComponent,
+    RaceServiceTestsComponent
   ],
   imports: [
     BrowserModule,

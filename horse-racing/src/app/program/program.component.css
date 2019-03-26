@@ -2,6 +2,14 @@ input.odds {
   width: 3em;
 }
 
+input.track {
+  width: 3em;
+}
+
+input.race-number {
+  width: 2em;
+}
+
 
 
 span.post-number.trainer-odds-pick {

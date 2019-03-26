@@ -4,6 +4,7 @@ import { OddsManager } from '../oddsManager';
 import { OddsMethod } from '../oddsMethod';
 import { KeyedCollection } from '../keyedCollection';
 import { OddsMethodItem } from '../oddsMethodItem';
+import { Race } from '../race';
 
 @Component({
   selector: 'app-program',
@@ -12,7 +13,8 @@ import { OddsMethodItem } from '../oddsMethodItem';
 })
 export class ProgramComponent implements OnInit {
 
-  entries: Entry[];
+  race: Race;
+  // entries: Entry[];
   oddsManager: OddsManager;
   oddsMethod: OddsMethod;
   oddsMethodResults: KeyedCollection<OddsMethodItem>;
@@ -20,6 +22,7 @@ export class ProgramComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.race = new Race();
     this.initEntries();
     this.oddsManager = new OddsManager();
     this.oddsMethod = new OddsMethod();
@@ -28,9 +31,9 @@ export class ProgramComponent implements OnInit {
   }
 
   initEntries() {
-    this.entries = new Array<Entry>();
+    this.race.entries = new Array<Entry>();
     for (let i = 1; i < 13 ; i++) {
-      this.entries.push(new Entry(i));
+      this.race.entries.push(new Entry(i));
     }
   }
 
@@ -59,14 +62,14 @@ export class ProgramComponent implements OnInit {
   }
 
   copyOdds() {
-    for (const odds of this.entries) {
+    for (const odds of this.race.entries) {
       odds.oneMinuteOdds = odds.fiveMinuteOdds;
     }
     this.callOddsMethod();
   }
 
   callOddsMethod() {
-    this.oddsMethodResults = this.oddsMethod.apply(this.entries);
+    this.oddsMethodResults = this.oddsMethod.apply(this.race.entries);
   }
 
   oddsMethodItem(entry: Entry) {
@@ -74,12 +77,12 @@ export class ProgramComponent implements OnInit {
   }
 
   testSetup() {
-    this.entries[0].fiveMinuteOdds = this.oddsManager.getOddsFromActual(5);
-    this.entries[1].fiveMinuteOdds = this.oddsManager.getOddsFromActual(4);
-    this.entries[2].fiveMinuteOdds = this.oddsManager.getOddsFromActual(6);
-    this.entries[3].fiveMinuteOdds = this.oddsManager.getOddsFromActual(3.5);
-    this.entries[4].fiveMinuteOdds = this.oddsManager.getOddsFromActual(2.5);
-    this.entries[5].fiveMinuteOdds = this.oddsManager.getOddsFromActual(7);
+    this.race.entries[0].fiveMinuteOdds = this.oddsManager.getOddsFromActual(5);
+    this.race.entries[1].fiveMinuteOdds = this.oddsManager.getOddsFromActual(4);
+    this.race.entries[2].fiveMinuteOdds = this.oddsManager.getOddsFromActual(6);
+    this.race.entries[3].fiveMinuteOdds = this.oddsManager.getOddsFromActual(3.5);
+    this.race.entries[4].fiveMinuteOdds = this.oddsManager.getOddsFromActual(2.5);
+    this.race.entries[5].fiveMinuteOdds = this.oddsManager.getOddsFromActual(7);
   }
 
 }

@@ -1,5 +1,15 @@
 <div class="row">
   <div class="col">
+    <label>Track:</label>
+    <input type="text" class="track" [(ngModel)]="race.track" />
+  </div>
+  <div class="col">
+      <label>Race No.:</label>
+      <input type="text"  class="race-number" [(ngModel)]="race.number" />
+    </div>
+  </div>
+<div class="row">
+  <div class="col">
     <button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">
       Copy
     </button>
@@ -22,7 +32,7 @@
           <td>No.</td>
         </tr>
       </tbody>
-      <tr *ngFor="let entry of entries">
+      <tr *ngFor="let entry of race.entries">
         <td>{{ entry.postNumber }}</td>
         <td>
           <button
