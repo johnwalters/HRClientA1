@@ -113,6 +113,7 @@ export class OddsManager {
     this.actuals.Add('1', 1);
     this.actuals.Add('6/5', 1.2);
     this.actuals.Add('7/5', 1.4);
+    this.actuals.Add('3/2', 1.5);
     this.actuals.Add('8/5', 1.6);
     this.actuals.Add('9/5', 1.8);
     this.actuals.Add('2', 2);
@@ -130,6 +131,7 @@ export class OddsManager {
     this.displayed.Add( 1.0.toString(), '1');
     this.displayed.Add( 1.2.toString(), '6/5');
     this.displayed.Add( 1.4.toString(), '7/5');
+    this.displayed.Add( 1.5.toString(), '3/2');
     this.displayed.Add( 1.6.toString(), '8/5');
     this.displayed.Add( 1.8.toString(), '9/5');
     this.displayed.Add( 2.0.toString(), '2');
@@ -149,6 +151,7 @@ export class OddsManager {
     this.displayedOrdered.push('1');
     this.displayedOrdered.push('6/5');
     this.displayedOrdered.push('7/5');
+    this.displayedOrdered.push('3/2');
     this.displayedOrdered.push('8/5');
     this.displayedOrdered.push('9/5');
     this.displayedOrdered.push('2');
