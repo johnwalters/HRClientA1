@@ -55,6 +55,7 @@ export class ProgramComponent implements OnInit {
   incrementOdds(entry: Entry, isFiveMinute: boolean) {
     // if (!entry.fiveMinuteOdds || !entry.fiveMinuteOdds.displayed) return;
     if (isFiveMinute) {
+      const displayed: string = entry.fiveMinuteOdds.displayed.toString();
       entry.fiveMinuteOdds = this.oddsManager.increment(entry.fiveMinuteOdds.displayed);
     } else {
       entry.oneMinuteOdds = this.oddsManager.increment(entry.oneMinuteOdds.displayed);

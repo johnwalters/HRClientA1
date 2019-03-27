@@ -2,12 +2,16 @@
     <div class="col"><a routerLink="/races" >All Races</a></div>
   <div class="col">
     <label>Track:</label>
-    <input type="text" class="track" [(ngModel)]="race.track" />
+    {{race.track}}
   </div>
   <div class="col">
       <label>Race No.:</label>
-      <input type="text"  class="race-number" [(ngModel)]="race.number" />
+      {{race.number}}
     </div>
+    <div class="col">
+        <label>Date:</label>
+        {{race.date}}
+      </div>
   </div>
 <div class="row">
   <div class="col">

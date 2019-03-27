@@ -31,6 +31,7 @@ export class RaceService {
   }
 
   public static createRace(track: string, date: string, number: number): Race {
+    track = track.toUpperCase();
     const race = new Race();
     race.track = track;
     race.date = date;
@@ -61,6 +62,7 @@ export class RaceService {
   }
 
   public getRace(track: string, date: string, number: number): Race {
+    track = track.toUpperCase();
     const key = this.getItemKey(track, date, number);
     return this.keyedRaces.Item(key);
   }
@@ -71,6 +73,7 @@ export class RaceService {
   }
 
   public deleteRace(track: string, date: string, number: number): void {
+    track = track.toUpperCase();
     const key = this.getItemKey(track, date, number);
     this.keyedRaces.Remove(key);
     this.saveRaces();
@@ -85,6 +88,7 @@ export class RaceService {
   }
 
   private getItemKey(track: string, date: string, number: number): string {
+    track = track.toUpperCase();
     const key = track + '_' + date + '_' + number.toString();
     return key;
   }
