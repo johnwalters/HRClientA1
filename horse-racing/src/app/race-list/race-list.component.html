@@ -5,6 +5,11 @@
 
       </app-add-race-modal>
     </div>
+    <div class="col text-right ml-1">
+        <label>Current Time:</label>
+        {{currentTime}}
+      </div>
+
   </div>
 
     <div class="row">
@@ -16,6 +21,7 @@
                     <td>Date</td>
                     <td>Race Number</td>
                     <td>Post Time</td>
+                    <td>Minutes</td>
                     <td>Action</td>
                   </tr>
                 </tbody>
@@ -40,6 +46,11 @@
                   <td>
                       <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
                         {{ race.time }}
+                      </a>
+                  </td>
+                  <td>
+                      <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
+                        {{race.minutesToPost }}
                       </a>
                   </td>
                   <td>

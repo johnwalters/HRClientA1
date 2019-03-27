@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Race } from '../race';
 import { RaceService } from '../race.service';
+import { Utilities } from '../utilities';
+import { MinutesToPost } from '../MinutesToPost';
 
 @Component({
   selector: 'app-race-list',
@@ -8,17 +10,17 @@ import { RaceService } from '../race.service';
   styleUrls: ['./race-list.component.css']
 })
 export class RaceListComponent implements OnInit {
+  currentTime: string;
+  minutesToPostFirstRace: number;
 
-
-  constructor(private service: RaceService) { }
+  constructor(private service: RaceService) {}
 
   ngOnInit() {
-    // TODO: grab races from storage
+    this.currentTime = Utilities.getNowHHMMSSa();
+    this.tickTock();
   }
 
-  promptToAddRace() {
-
-  }
+  promptToAddRace() {}
 
   races(): Race[] {
     return this.service.getAllRaces();
@@ -28,4 +30,16 @@ export class RaceListComponent implements OnInit {
     // should not have to do anything
   }
 
+  tickTock(): void {
+    setInterval(() => {
+      this.currentTime = Utilities.getNowHHMMSSa();
+      this.minutesToPostFirstRace = null;
+
+      for (const minToPostRace of this.races()) {
+        const minutesToPost: MinutesToPost = Utilities.getRaceTimeState(minToPostRace);
+        minToPostRace.minutesToPost = minutesToPost.minutesToPost;
+        minToPostRace.raceTimeState = minutesToPost.raceTimeState;
+      }
+    }, 1000);
+  }
 }
