@@ -17,18 +17,14 @@
           {{race.time}}
         </div>
   </div>
-<div class="row">
-  <div class="col">
-    <button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">
-      Copy
-    </button>
-  </div>
+<!-- <div class="row">
+
   <div class="col text-right mr-1">
     <button class="btn btn-sm btn-outline-danger  " (click)="testSetup()">
       Test Data
     </button>
   </div>
-</div>
+</div> -->
 <div class="row">
   <div class="col">
     <table class="table">
@@ -36,7 +32,11 @@
         <tr>
           <td>No.</td>
           <td>Trainer</td>
-          <td>5 Min Odds</td>
+          <td>5 Min Odds
+            <br/><button class="btn btn-sm btn-outline-info  " (click)="copyOdds()">
+                Set
+              </button>
+          </td>
           <td>1 Min Odds</td>
           <td>No.</td>
         </tr>
