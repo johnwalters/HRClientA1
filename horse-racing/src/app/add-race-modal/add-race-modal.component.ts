@@ -15,6 +15,7 @@ export class AddRaceModalComponent implements OnInit {
   track: string;
   date: string;
   number: number;
+  minutesToPost: number;
 
   constructor(
     private raceService: RaceService,
@@ -28,6 +29,7 @@ export class AddRaceModalComponent implements OnInit {
 
   addRace() {
     const race = RaceService.createRace(this.track, this.date, this.number);
+    race.time = Utilities.getRaceTime(this.minutesToPost);
     this.raceService.setRace(race);
     this.onCloseHandled();
     // go there

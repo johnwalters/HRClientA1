@@ -15,7 +15,7 @@
                     <td>Track</td>
                     <td>Date</td>
                     <td>Race Number</td>
-                    <td>Entries</td>
+                    <td>Post Time</td>
                     <td>Action</td>
                   </tr>
                 </tbody>
@@ -36,9 +36,10 @@
                       </a>
 
                   </td>
+
                   <td>
                       <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
-                        {{ race.entries.length }}
+                        {{ race.time }}
                       </a>
                   </td>
                   <td>
