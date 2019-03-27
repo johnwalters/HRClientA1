@@ -25,6 +25,23 @@ export class Utilities {
     result.minutesToPost = raceTime.diff(moment(new Date()), 'minutes');
     // TODO: determine race time state
     result.raceTimeState =  RaceTimeState.ok;
+    if (result.minutesToPost <= -5) return result;
+    if (result.minutesToPost <= 2) {
+      result.raceTimeState =  RaceTimeState.veryCloseToOneMin;
+      return result;
+    }
+    if (result.minutesToPost <= 3) {
+      result.raceTimeState =  RaceTimeState.closeToOneMin;
+      return result;
+    }
+    if (result.minutesToPost <= 6) {
+      result.raceTimeState =  RaceTimeState.veryCloseToFiveMin;
+      return result;
+    }
+    if (result.minutesToPost <= 7) {
+      result.raceTimeState =  RaceTimeState.closeToFiveMin;
+      return result;
+    }
     return result;
   }
 

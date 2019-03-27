@@ -11,10 +11,10 @@ export class Race {
 }
 
 export enum RaceTimeState {
-  closeToFiveMin,
-  veryCloseToFiveMin,
-  afterFiveMinUnset,
-  closeToOneMin,
-  veryCloseToOneMin,
-  ok,
+  closeToFiveMin = 'closeToFiveMin',
+  veryCloseToFiveMin = 'veryCloseToFiveMin',
+  afterFiveMinUnset = 'afterFiveMinUnset',
+  closeToOneMin = 'closeToOneMin',
+  veryCloseToOneMin = 'veryCloseToOneMin',
+  ok = 'ok'
 }
