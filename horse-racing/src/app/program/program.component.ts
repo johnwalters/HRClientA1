@@ -100,4 +100,8 @@ export class ProgramComponent implements OnInit {
     this.race.entries[5].fiveMinuteOdds = this.oddsManager.getOddsFromActual(7);
   }
 
+  getSaddleClothClass(postNumber: number) {
+    return 'saddle-cloth-' + postNumber.toString();
+  }
+
 }

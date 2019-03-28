@@ -42,7 +42,7 @@
         </tr>
       </tbody>
       <tr *ngFor="let entry of race.entries">
-        <td>{{ entry.postNumber }}</td>
+        <td><span class="saddle-cloth" [ngClass]="getSaddleClothClass(entry.postNumber)">{{ entry.postNumber }}</span> </td>
         <td>
           <button
             [ngClass]="{

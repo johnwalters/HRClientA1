@@ -25,3 +25,105 @@ span.post-number.odds-pick {
   font-weight: bold;
   padding:.5em;
 }
+
+span.saddle-cloth {
+  padding: .25em;
+}
+
+span.saddle-cloth-1 {
+  background-color: red;
+  color:white;
+}
+
+span.saddle-cloth-2 {
+  background-color: white;
+  color:black;
+}
+
+span.saddle-cloth-3 {
+  background-color: blue;
+  color:white;
+}
+
+span.saddle-cloth-4 {
+  background-color: yellow;
+  color:black;
+}
+
+span.saddle-cloth-5 {
+  background-color: green;
+  color:white;
+}
+
+span.saddle-cloth-6 {
+  background-color: black;
+  color:gold;
+}
+
+span.saddle-cloth-7 {
+  background-color: orange;
+  color:black;
+}
+
+span.saddle-cloth-8 {
+  background-color: pink;
+  color:black;
+}
+
+span.saddle-cloth-9 {
+  background-color: turquoise;
+  color:black;
+}
+
+span.saddle-cloth-10 {
+  background-color: purple;
+  color:white;
+}
+
+span.saddle-cloth-11 {
+  background-color: gray;
+  color:red;
+}
+
+span.saddle-cloth-12 {
+  background-color: lime;
+  color:black;
+}
+
+span.saddle-cloth-13 {
+  background-color: brown;
+  color:white;
+}
+
+span.saddle-cloth-14 {
+  background-color: maroon;
+  color:yellow;
+}
+
+span.saddle-cloth-15 {
+  background-color: khaki;
+  color:black;
+}
+
+/*
+1 Red cloth with white #
+2 White cloth with black #
+3 Blue cloth with white #
+4 Yellow cloth with black #
+5Green cloth with white #
+6 Black cloth with gold #
+7 Orange cloth with black #
+8 Pink cloth with black #
+9 Turquoise cloth with black#
+10 Purple cloth with white #
+11 Gray cloth with red #
+12 Lime cloth with black #
+13 Brown cloth with white #
+14 Maroon cloth with yellow #
+15 Khaki cloth with black #
+16 Light Blue (Copen Blue) cloth with red #
+17 Navy cloth with white #
+18 Forest Green cloth with yellow #
+19 Dark Royal Blue (Moonstone) cloth with red #
+20 Fuchsia cloth with yellow #
+21 Light Purple cloth with navy # */
