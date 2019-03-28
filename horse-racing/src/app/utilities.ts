@@ -9,7 +9,7 @@ export class Utilities {
 
   public static getRaceTime(minutesToPost: number): string {
     const raceTime = moment().add(minutesToPost, 'minute');
-    return raceTime.format('h:mm a');
+    return raceTime.format('HH:mm');
   }
 
   public static getNowHHMMa(): string {
@@ -20,8 +20,10 @@ export class Utilities {
   }
 
   public static getRaceTimeState(race: Race): MinutesToPost {
+    // const isDebug = false;
     const result = new MinutesToPost();
-    const raceTime = moment(race.date + ' ' + race.time);
+    const raceTime = moment(race.date + ' ' + race.time, 'MM-DD-YYYY hh:mm');
+    // Utilities.log('raceTime (from ' + race.date + ' ' + race.time + '):' + raceTime, isDebug);
     result.minutesToPost = raceTime.diff(moment(new Date()), 'minutes');
     result.raceTimeState =  RaceTimeState.ok;
     if (result.minutesToPost <= -5) {
@@ -51,6 +53,11 @@ export class Utilities {
     const raceTime = moment(race.date + ' ' + race.time);
     const minutesToPost = raceTime.diff(moment(new Date()), 'minutes');
     return minutesToPost;
+  }
+
+  public static log(message: string, isDebug: boolean): void {
+    if (!isDebug)return;
+    console.log(message);
   }
 }
 
