@@ -11,7 +11,9 @@ export class DeleteRaceModalComponent implements OnInit {
   display: string;
   isOpen = false;
 
-  @Input() raceToDelete: Race;
+  @Input() track: string;
+  @Input() date: string;
+  @Input() number: number;
   @Output() raceDeleted = new EventEmitter();
 
   constructor(
@@ -23,8 +25,8 @@ export class DeleteRaceModalComponent implements OnInit {
   }
 
   deleteRace(): void {
-    this.raceService.deleteRace(this.raceToDelete.track, this.raceToDelete.date, this.raceToDelete.number);
-    this.raceDeleted.emit({ race: this.raceToDelete });
+    this.raceService.deleteRace(this.track, this.date, this.number);
+    this.raceDeleted.emit({ success: true });
     this.onCloseHandled();
   }
   openModal() {

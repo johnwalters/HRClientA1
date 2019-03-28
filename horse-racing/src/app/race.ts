@@ -5,8 +5,6 @@ export class Race {
   public date: string;
   public number: number;
   public time: string;
-  public raceTimeState: RaceTimeState; // TODO: should be in a model
-  public minutesToPost: number; // TODO: should be in a model
   public entries: Entry[];
 }
 

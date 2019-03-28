@@ -25,7 +25,7 @@
                     <td>Action</td>
                   </tr>
                 </tbody>
-                <tr *ngFor="let race of races()">
+                <tr *ngFor="let race of raceModels">
                   <td>
                       <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
                         {{ race.track }}
@@ -58,7 +58,9 @@
                   </td>
                   <td>
                     <app-delete-race-modal
-                      [raceToDelete] = "race"
+                      [track] = "race.track"
+                      [date] = "race.date"
+                      [number] = "race.number"
                       (raceDeleted) = "raceDeleted($event)"
                     ></app-delete-race-modal>
                   </td>
