@@ -7,6 +7,7 @@ import { OddsMethodItem } from '../oddsMethodItem';
 import { Race } from '../race';
 import { RaceService } from '../race.service';
 import { ActivatedRoute } from '@angular/router';
+import { Utilities } from '../utilities';
 
 @Component({
   selector: 'app-program',
@@ -16,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProgramComponent implements OnInit {
 
   race: Race;
+  raceTimeHhmma: string;
   // entries: Entry[];
   oddsManager: OddsManager;
   oddsMethod: OddsMethod;
@@ -38,6 +40,7 @@ export class ProgramComponent implements OnInit {
       const date = params['date'];
       const number = params['number'];
       this.race = this.raceService.getRace(track, date, number);
+      this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
     });
   }
 

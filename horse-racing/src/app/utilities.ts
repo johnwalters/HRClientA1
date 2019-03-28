@@ -19,6 +19,10 @@ export class Utilities {
     return moment(new Date()).format('h:mm:ss a');
   }
 
+  public static getRaceTimeHhmma(race: Race): string {
+    return moment(race.date + ' ' + race.time, 'MM-DD-YYYY hh:mm').format('h:mm a');
+  }
+
   public static getRaceTimeState(race: Race): MinutesToPost {
     // const isDebug = false;
     const result = new MinutesToPost();

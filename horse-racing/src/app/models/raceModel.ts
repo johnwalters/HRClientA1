@@ -8,8 +8,9 @@ export class RaceModel {
   public time: string;
   public entries: Entry[];
 
-  public raceTimeState: RaceTimeState; // TODO: should be in a model
-  public minutesToPost: number; // TODO: should be in a model
+  public raceTimeState: RaceTimeState;
+  public minutesToPost: number;
+  public timeHhmma: string;
 
   public constructor(race: Race) {
     this.track = race.track;

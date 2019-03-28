@@ -58,11 +58,10 @@ export class RaceListComponent implements OnInit {
     this.minutesToPostFirstRace = null;
     this.raceModels = this.getRaceModels();
     for (const minToPostRace of this.raceModels) {
-      const minutesToPost: MinutesToPost = Utilities.getRaceTimeState(
-        minToPostRace
-      );
+      const minutesToPost: MinutesToPost = Utilities.getRaceTimeState(minToPostRace);
       minToPostRace.minutesToPost = minutesToPost.minutesToPost;
       minToPostRace.raceTimeState = minutesToPost.raceTimeState;
+      minToPostRace.timeHhmma = Utilities.getRaceTimeHhmma(minToPostRace);
     }
   }
 }
