@@ -50,7 +50,10 @@
                   </td>
                   <td>
                       <a routerLink="/race/{{race.track}}/{{race.date}}/{{race.number}}" >
-                        {{race.minutesToPost }} {{race.raceTimeState}}
+                        <div class="mtp" [ngClass]="getRaceMinutesToPostStateClass(race)" >
+                            <span class="m1">  {{race.minutesToPost }}</span>
+                        </div>
+
                       </a>
                   </td>
                   <td>

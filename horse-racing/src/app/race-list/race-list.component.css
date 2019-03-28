@@ -1,0 +1,58 @@
+span.min-post-ok {
+  color:black;
+}
+
+span.min-post-veryCloseToFiveMin {
+  color:orange;
+}
+
+span.min-post-closeToFiveMin {
+  color:yellow;
+}
+
+span.min-post-veryCloseToOneMin {
+  color:red;
+}
+
+span.min-post-closeToOneMin {
+  color:DARKSALMON;
+}
+
+span.min-post-off {
+  display:none;
+}
+/* mtp */
+div.mtp {
+  width:3.2em;
+  border:3px solid;
+  border-radius: 10px;
+  padding-left:.5em;
+}
+
+div.mtp.min-post-ok {
+  border:none;
+}
+
+div.mtp.min-post-veryCloseToFiveMin {
+  border-color:orange;
+}
+
+div.mtp.min-post-closeToFiveMin {
+  border-color:yellow;
+}
+
+div.mtp.mtp.min-post-veryCloseToOneMin {
+  border-color:red;
+}
+
+div.mtp.mtp.min-post-closeToOneMin {
+  border-color:DARKSALMON;
+}
+
+div.mtp.mtp.min-post-off {
+  border:none;
+}
+
+div.mtp.mtp.min-post-off span {
+  display:none;
+}

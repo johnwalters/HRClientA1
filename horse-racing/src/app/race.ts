@@ -16,5 +16,6 @@ export enum RaceTimeState {
   afterFiveMinUnset = 'afterFiveMinUnset',
   closeToOneMin = 'closeToOneMin',
   veryCloseToOneMin = 'veryCloseToOneMin',
-  ok = 'ok'
+  ok = 'ok',
+  off = 'off'
 }

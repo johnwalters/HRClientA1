@@ -30,6 +30,15 @@ export class RaceListComponent implements OnInit {
     // should not have to do anything
   }
 
+  getRaceMinutesToPostStateClass(race: Race): any {
+    let mtpClass = 'min-post-' + 'ok';
+    if (race.raceTimeState) {
+      mtpClass = 'min-post-' + race.raceTimeState;
+    }
+    return mtpClass;
+  }
+
+
   tickTock(): void {
     setInterval(() => {
       this.currentTime = Utilities.getNowHHMMSSa();

@@ -23,9 +23,11 @@ export class Utilities {
     const result = new MinutesToPost();
     const raceTime = moment(race.date + ' ' + race.time);
     result.minutesToPost = raceTime.diff(moment(new Date()), 'minutes');
-    // TODO: determine race time state
     result.raceTimeState =  RaceTimeState.ok;
-    if (result.minutesToPost <= -5) return result;
+    if (result.minutesToPost <= -5) {
+      result.raceTimeState =  RaceTimeState.off;
+      return result;
+    }
     if (result.minutesToPost <= 2) {
       result.raceTimeState =  RaceTimeState.veryCloseToOneMin;
       return result;
