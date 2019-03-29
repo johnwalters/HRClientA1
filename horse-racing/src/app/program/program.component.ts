@@ -69,6 +69,7 @@ export class ProgramComponent implements OnInit {
 
   toggleTrainer(entry: Entry) {
     entry.isTrainerGood = !entry.isTrainerGood;
+    this.raceService.setRace(this.race);
   }
 
   incrementOdds(entry: Entry, isFiveMinute: boolean) {
