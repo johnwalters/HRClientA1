@@ -8,6 +8,7 @@ import { Race } from '../race';
 import { RaceService } from '../race.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utilities } from '../utilities';
+import { race } from 'rxjs';
 
 @Component({
   selector: 'app-program',
@@ -23,6 +24,7 @@ export class ProgramComponent implements OnInit {
   oddsMethod: OddsMethod;
   oddsMethodResults: KeyedCollection<OddsMethodItem>;
   private parameterSubscription: any;
+  totalEntries: number;
 
   constructor(
     private raceService: RaceService,
@@ -41,6 +43,7 @@ export class ProgramComponent implements OnInit {
       const number = params['number'];
       this.race = this.raceService.getRace(track, date, number);
       this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
+      this.totalEntries = this.race.entries.length;
     });
   }
 
@@ -102,6 +105,13 @@ export class ProgramComponent implements OnInit {
 
   getSaddleClothClass(postNumber: number) {
     return 'saddle-cloth-' + postNumber.toString();
+  }
+
+  resetTotalEntries(): void {
+    const chopCount = this.race.entries.length - this.totalEntries;
+    for (let chopIndex = 1; chopIndex <= chopCount; chopIndex++) {
+      this.race.entries.splice(this.race.entries.length - 1, 1);
+    }
   }
 
 }
