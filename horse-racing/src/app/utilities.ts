@@ -23,6 +23,10 @@ export class Utilities {
     return moment(race.date + ' ' + race.time, 'MM-DD-YYYY hh:mm').format('h:mm a');
   }
 
+  public static getRaceDateMDY(race: Race): string {
+    return moment(race.date + ' ' + race.time, 'MM-DD-YYYY hh:mm').format('MMDDYY');
+  }
+
   public static getRaceTimeState(race: Race): MinutesToPost {
     // const isDebug = false;
     const result = new MinutesToPost();
@@ -62,6 +66,14 @@ export class Utilities {
   public static log(message: string, isDebug: boolean): void {
     if (!isDebug)return;
     console.log(message);
+  }
+
+  public static getExternalRaceUrl(race: Race): string {
+    const mdy = Utilities.getRaceDateMDY(race);
+    const url = 'http://www.equibase.com/static/entry/' + race.track + mdy + 'USA' + race.number.toString() + '-EQB.html';
+    return url;
+    // http://www.equibase.com/static/entry/SA032919USA5-EQB.html
+    // http://www.equibase.com/static/entry/{trackCode}{mmddyy}}USA{raceNumber}-EQB.html
   }
 }
 

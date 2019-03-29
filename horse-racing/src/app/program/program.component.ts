@@ -8,7 +8,6 @@ import { Race } from '../race';
 import { RaceService } from '../race.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utilities } from '../utilities';
-import { race } from 'rxjs';
 import { Track } from '../track';
 import { TrackService } from '../track.service';
 
@@ -29,6 +28,7 @@ export class ProgramComponent implements OnInit {
   private parameterSubscription: any;
   totalEntries: number;
   isTrackEditMode: boolean;
+  externalRaceUrl: string;
 
   constructor(
     private raceService: RaceService,
@@ -50,6 +50,7 @@ export class ProgramComponent implements OnInit {
       this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
       this.totalEntries = this.race.entries.length;
       this.track = this.trackService.getTrack(this.race.track);
+      this.externalRaceUrl = Utilities.getExternalRaceUrl(this.race);
     });
   }
 
