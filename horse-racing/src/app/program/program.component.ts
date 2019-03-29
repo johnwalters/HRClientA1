@@ -9,6 +9,8 @@ import { RaceService } from '../race.service';
 import { ActivatedRoute } from '@angular/router';
 import { Utilities } from '../utilities';
 import { race } from 'rxjs';
+import { Track } from '../track';
+import { TrackService } from '../track.service';
 
 @Component({
   selector: 'app-program',
@@ -18,6 +20,7 @@ import { race } from 'rxjs';
 export class ProgramComponent implements OnInit {
 
   race: Race;
+  track: Track;
   raceTimeHhmma: string;
   // entries: Entry[];
   oddsManager: OddsManager;
@@ -25,9 +28,11 @@ export class ProgramComponent implements OnInit {
   oddsMethodResults: KeyedCollection<OddsMethodItem>;
   private parameterSubscription: any;
   totalEntries: number;
+  isTrackEditMode: boolean;
 
   constructor(
     private raceService: RaceService,
+    private trackService: TrackService,
     private route: ActivatedRoute,
   ) { }
 
@@ -44,6 +49,7 @@ export class ProgramComponent implements OnInit {
       this.race = this.raceService.getRace(track, date, number);
       this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
       this.totalEntries = this.race.entries.length;
+      this.track = this.trackService.getTrack(this.race.track);
     });
   }
 
@@ -112,6 +118,15 @@ export class ProgramComponent implements OnInit {
     for (let chopIndex = 1; chopIndex <= chopCount; chopIndex++) {
       this.race.entries.splice(this.race.entries.length - 1, 1);
     }
+  }
+
+  setTrackEditMode(state: boolean) {
+    this.isTrackEditMode = state;
+  }
+
+  saveTrackNotes(): void {
+    this.trackService.setTrack(this.track);
+    this.setTrackEditMode(false);
   }
 
 }

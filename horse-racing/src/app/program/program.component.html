@@ -128,8 +128,23 @@
   </div>
 </div>
 <div class="row">
-
   <div class="col">
     <label>Entries:</label>
     <input type="number" (change)="resetTotalEntries()" [(ngModel)]="totalEntries"/>
   </div>
+  </div>
+
+  <div class="row">
+      <div class="col">
+        <label>Track Notes:</label><br/>
+        <textarea  [(ngModel)]="track.notes" [readonly]="!isTrackEditMode"
+        rows="40" cols="100" ></textarea>
+        <!-- <span *ngIf="!isTrackEditMode">{{track.notes}}</span><br/> -->
+            <button class="btn btn-sm btn-outline-info "  *ngIf="!isTrackEditMode" (click)="setTrackEditMode(true)">
+                Edit
+            </button>
+            <button class="btn btn-sm btn-info " *ngIf="isTrackEditMode" (click)="saveTrackNotes()">
+                Save
+            </button>
+      </div>
+      </div>
