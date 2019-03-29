@@ -19,6 +19,24 @@
           <label>Post Time:</label>
           {{raceTimeHhmma}}
         </div>
+        <div class="col">
+            <label>MTP:</label>
+            {{raceModel.minutesToPost}}
+            <span class="btn-container">
+                <button
+                  class="btn btn-sm btn-outline-secondary ml-1 "
+                  (click)="incrementMtp()"
+                >
+                  <i class="fas fa-plus"></i></button
+                >
+                <button
+                  class="btn btn-sm btn-outline-secondary ml-1"
+                  (click)="decrementMtp()"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+              </span>
+          </div>
   </div>
 <!-- <div class="row">
 

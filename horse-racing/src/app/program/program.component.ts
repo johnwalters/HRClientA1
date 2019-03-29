@@ -10,6 +10,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Utilities } from '../utilities';
 import { Track } from '../track';
 import { TrackService } from '../track.service';
+import { MinutesToPost } from '../MinutesToPost';
+import { RaceModel } from '../models/raceModel';
 
 @Component({
   selector: 'app-program',
@@ -19,6 +21,7 @@ import { TrackService } from '../track.service';
 export class ProgramComponent implements OnInit {
 
   race: Race;
+  raceModel: RaceModel;
   track: Track;
   raceTimeHhmma: string;
   // entries: Entry[];
@@ -47,10 +50,13 @@ export class ProgramComponent implements OnInit {
       const date = params['date'];
       const number = params['number'];
       this.race = this.raceService.getRace(track, date, number);
+      this.raceModel = new RaceModel(this.race);
       this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
       this.totalEntries = this.race.entries.length;
       this.track = this.trackService.getTrack(this.race.track);
       this.externalRaceUrl = Utilities.getExternalRaceUrl(this.race);
+      this.refresh();
+      this.tickTock();
     });
   }
 
@@ -128,6 +134,35 @@ export class ProgramComponent implements OnInit {
   saveTrackNotes(): void {
     this.trackService.setTrack(this.track);
     this.setTrackEditMode(false);
+  }
+
+  tickTock(): void {
+    setInterval(() => {
+      this.refresh();
+    }, 10000);
+  }
+
+  refresh() {
+    const minutesToPost: MinutesToPost = Utilities.getRaceTimeState(this.race);
+    this.raceModel.minutesToPost = minutesToPost.minutesToPost;
+    this.raceModel.raceTimeState = minutesToPost.raceTimeState;
+    this.raceModel.timeHhmma = Utilities.getRaceTimeHhmma(this.raceModel);
+    this.raceTimeHhmma = Utilities.getRaceTimeHhmma(this.race);
+  }
+
+  incrementMtp() {
+    this.resetMtp(this.raceModel.minutesToPost + 2);
+  }
+
+  decrementMtp() {
+    this.resetMtp(this.raceModel.minutesToPost);
+  }
+
+  private resetMtp(mtp: number): void {
+    this.race.time = Utilities.getRaceTime(mtp);
+    this.raceService.setRace(this.race);
+    this.raceModel = new RaceModel(this.race);
+    this.refresh();
   }
 
 }
