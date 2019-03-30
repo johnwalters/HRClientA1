@@ -75,6 +75,12 @@ export class ProgramComponent implements OnInit {
     this.raceService.setRace(this.race);
   }
 
+  toggleIsScratched(entry: Entry) {
+    entry.isScratched = !entry.isScratched;
+    this.raceService.setRace(this.race);
+    this.callOddsMethod();
+  }
+
   incrementOdds(entry: Entry, isFiveMinute: boolean) {
     // if (!entry.fiveMinuteOdds || !entry.fiveMinuteOdds.displayed) return;
     if (isFiveMinute) {

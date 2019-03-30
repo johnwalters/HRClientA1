@@ -18,6 +18,7 @@ export class OddsMethod {
     // initialize items
     this.items = new Array<OddsMethodItem>();
     for (const entry of entries) {
+      if (entry.isScratched) continue;
       this.items.push(new OddsMethodItem(entry));
     }
     // sort, note top 6

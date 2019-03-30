@@ -63,9 +63,16 @@
         </tr>
       </tbody>
       <tr *ngFor="let entry of race.entries">
-        <td><span class="saddle-cloth" [ngClass]="getSaddleClothClass(entry.postNumber)">{{ entry.postNumber }}</span> </td>
         <td>
-          <button
+          <span class="saddle-cloth" [ngClass]="getSaddleClothClass(entry.postNumber)">{{ entry.postNumber }}</span>
+          <span class="ml-1">
+            <input type="checkbox" [(ngModel)]="entry.isScratched" (click)="toggleIsScratched(entry)" >
+            <span *ngIf="!entry.isScratched" class="scratched-heading-unscratched text-sm font-weight-light  ml-1">Scr</span>
+            <span *ngIf="entry.isScratched" class="scratched-heading-scratched text-sm   ml-1">SCRATCHED</span>
+          </span>
+        </td>
+        <td>
+          <button *ngIf="!entry.isScratched"
             [ngClass]="{
               'btn-warning': entry.isTrainerGood,
               'btn-outline-secondary': !entry.isTrainerGood
@@ -77,8 +84,8 @@
           </button>
         </td>
         <td>
-          <div class="row">
-            <div class="col">
+          <div *ngIf="!entry.isScratched" class="row">
+            <div class="col ">
               <input
                 type="text"
                 class="odds"
@@ -104,7 +111,7 @@
           </div>
         </td>
         <td>
-          <div class="row">
+          <div  *ngIf="!entry.isScratched" class="row">
             <div class="col">
               <input
                 type="text"
