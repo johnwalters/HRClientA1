@@ -3,6 +3,7 @@ import { Odds } from './odds';
 
 export class OddsManager {
 
+  // TODO: handle odds of below 1/5 (1/9 etc.)
   private actuals: KeyedCollection<number>;
   private displayed: KeyedCollection<string>;
   private displayedOrdered: Array<string>;

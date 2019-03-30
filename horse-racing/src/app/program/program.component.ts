@@ -20,14 +20,10 @@ import { RaceModel } from '../models/raceModel';
 })
 export class ProgramComponent implements OnInit {
 
-  // TODO: allow scrathced entries
-  // TODO: Add race modal - number fields for race number and mtp
-
   race: Race;
   raceModel: RaceModel;
   track: Track;
   raceTimeHhmma: string;
-  // entries: Entry[];
   oddsManager: OddsManager;
   oddsMethod: OddsMethod;
   oddsMethodResults: KeyedCollection<OddsMethodItem>;
