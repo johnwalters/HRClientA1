@@ -9,6 +9,7 @@ import { RaceServiceTestsComponent } from './test/race-service-tests/race-servic
 import { AddRaceModalComponent } from './add-race-modal/add-race-modal.component';
 import { ModalTemplateComponent } from './modal-template.component';
 import { DeleteRaceModalComponent } from './delete-race-modal/delete-race-modal.component';
+import { UiSwitchModule } from 'ngx-toggle-switch';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { DeleteRaceModalComponent } from './delete-race-modal/delete-race-modal.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    UiSwitchModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

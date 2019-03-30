@@ -11,6 +11,7 @@
         Equibase
         <i class="fas fa-external-link-alt text-info"></i></a>
     </div>
+
     <div class="col">
         <label>Date:</label>
         {{race.date}}
@@ -66,8 +67,8 @@
         <td>
           <span class="saddle-cloth" [ngClass]="getSaddleClothClass(entry.postNumber)">{{ entry.postNumber }}</span>
           <span class="ml-1">
-            <input type="checkbox" [(ngModel)]="entry.isScratched" (click)="toggleIsScratched(entry)" >
-            <span *ngIf="!entry.isScratched" class="scratched-heading-unscratched text-sm font-weight-light  ml-1">Scr</span>
+            <input type="checkbox" *ngIf="enableScratches" [(ngModel)]="entry.isScratched" (click)="toggleIsScratched(entry)" >
+            <span *ngIf="enableScratches && !entry.isScratched" class="scratched-heading-unscratched text-sm font-weight-light  ml-1">Scr</span>
             <span *ngIf="entry.isScratched" class="scratched-heading-scratched text-sm   ml-1">SCRATCHED</span>
           </span>
         </td>
@@ -160,6 +161,25 @@
     <label>Entries:</label>
     <input type="number" (change)="resetTotalEntries()" [(ngModel)]="totalEntries"/>
   </div>
+  <div class="col">
+      <!-- <button
+                *ngIf="!enableScratches"
+                class="btn btn-sm btn-outline-secondary ml-1"
+                (click)="setEnableScratches(true)"
+              >
+                Scratch Horses
+              </button>
+              <button
+              *ngIf="enableScratches"
+              class="btn btn-sm btn-outline-secondary ml-1"
+              (click)="setEnableScratches(false)"
+            >
+              Cancel
+            </button>
+            <br/>-->
+            <span class="m3-1 mb-1">Scratch Horses</span>
+            <ui-switch [(ngModel)]="enableScratches"></ui-switch>
+    </div>
   </div>
 
   <div class="row">

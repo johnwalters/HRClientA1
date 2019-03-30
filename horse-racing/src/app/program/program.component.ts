@@ -31,6 +31,7 @@ export class ProgramComponent implements OnInit {
   totalEntries: number;
   isTrackEditMode: boolean;
   externalRaceUrl: string;
+  enableScratches: boolean;
 
   constructor(
     private raceService: RaceService,
@@ -135,6 +136,10 @@ export class ProgramComponent implements OnInit {
 
   setTrackEditMode(state: boolean) {
     this.isTrackEditMode = state;
+  }
+
+  setEnableScratches(state: boolean) {
+    this.enableScratches = state;
   }
 
   saveTrackNotes(): void {
