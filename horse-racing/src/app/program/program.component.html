@@ -162,21 +162,6 @@
     <input type="number" (change)="resetTotalEntries()" [(ngModel)]="totalEntries"/>
   </div>
   <div class="col">
-      <!-- <button
-                *ngIf="!enableScratches"
-                class="btn btn-sm btn-outline-secondary ml-1"
-                (click)="setEnableScratches(true)"
-              >
-                Scratch Horses
-              </button>
-              <button
-              *ngIf="enableScratches"
-              class="btn btn-sm btn-outline-secondary ml-1"
-              (click)="setEnableScratches(false)"
-            >
-              Cancel
-            </button>
-            <br/>-->
             <span class="m3-1 mb-1">Scratch Horses</span>
             <ui-switch [(ngModel)]="enableScratches"></ui-switch>
     </div>
