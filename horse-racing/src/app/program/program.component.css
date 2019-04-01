@@ -16,16 +16,20 @@ input.race-number {
   border-color: #347C17;
 }
 
+.tr-trainer {
+  background-color: #EBFFE0;
+}
+
 .btn-speed {
   color: white;
-  background-color: #008080;
-  border-color: #008080;
+  background-color: #EAC117;
+  border-color: #EAC117;
 }
 
 .btn-class {
   color: white;
-  background-color: #4CC417;
-  border-color: #4CC417;
+  background-color: #15317E;
+  border-color: #15317E;
 }
 
 span.post-number.trainer-odds-pick {

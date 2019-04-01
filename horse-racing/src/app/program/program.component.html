@@ -63,7 +63,11 @@
           <td>No.</td>
         </tr>
       </tbody>
-      <tr *ngFor="let entry of race.entries">
+      <tr *ngFor="let entry of race.entries"
+      [ngClass]="{
+        'tr-trainer': entry.isTrainerGood
+      }"
+      >
         <td>
           <span class="saddle-cloth" [ngClass]="getSaddleClothClass(entry.postNumber)">{{ entry.postNumber }}</span>
           <span class="ml-1">
@@ -83,26 +87,29 @@
           >
             T
           </button>
+
+          <button *ngIf="!entry.isScratched"
+          [ngClass]="{
+            'btn-class': entry.isClassGood,
+            'btn-outline-secondary': !entry.isClassGood
+          }"
+          class="btn btn-sm ml-3 mr-3"
+          (click)="toggleClass(entry)"
+        >
+          C
+        </button>
+
           <button *ngIf="!entry.isScratched"
             [ngClass]="{
               'btn-warning btn-speed': entry.isSpeedGood,
               'btn-outline-secondary': !entry.isSpeedGood
             }"
-            class="btn btn-sm ml-3 mr-3"
+            class="btn btn-sm "
             (click)="toggleSpeed(entry)"
           >
             S
           </button>
-          <button *ngIf="!entry.isScratched"
-            [ngClass]="{
-              'btn-class': entry.isClassGood,
-              'btn-outline-secondary': !entry.isClassGood
-            }"
-            class="btn btn-sm"
-            (click)="toggleClass(entry)"
-          >
-            C
-          </button>
+
         </td>
         <td>
           <div *ngIf="!entry.isScratched" class="row">
