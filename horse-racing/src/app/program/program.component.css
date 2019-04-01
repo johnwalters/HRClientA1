@@ -11,19 +11,19 @@ input.race-number {
 }
 
 .btn-trainer {
-  color: #212529;
+  color: white;
   background-color: #347C17;
   border-color: #347C17;
 }
 
 .btn-speed {
-  color: #212529;
+  color: white;
   background-color: #008080;
   border-color: #008080;
 }
 
 .btn-class {
-  color: #212529;
+  color: white;
   background-color: #4CC417;
   border-color: #4CC417;
 }
