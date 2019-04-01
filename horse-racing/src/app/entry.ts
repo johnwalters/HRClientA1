@@ -14,6 +14,8 @@ export class Entry {
   public weight: string;
   public trainerName: string;
   public isTrainerGood: boolean;
+  public isSpeedGood: boolean;
+  public isClassGood: boolean;
   public morningLineOdds: Odds;
   public fiveMinuteOdds: Odds;
   public oneMinuteOdds: Odds;

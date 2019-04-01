@@ -72,6 +72,16 @@ export class ProgramComponent implements OnInit {
     this.raceService.setRace(this.race);
   }
 
+  toggleSpeed(entry: Entry) {
+    entry.isSpeedGood = !entry.isSpeedGood;
+    this.raceService.setRace(this.race);
+  }
+
+  toggleClass(entry: Entry) {
+    entry.isClassGood = !entry.isClassGood;
+    this.raceService.setRace(this.race);
+  }
+
   toggleIsScratched(entry: Entry) {
     entry.isScratched = !entry.isScratched;
     this.raceService.setRace(this.race);
@@ -85,6 +95,7 @@ export class ProgramComponent implements OnInit {
       entry.fiveMinuteOdds = this.oddsManager.increment(entry.fiveMinuteOdds.displayed);
     } else {
       entry.oneMinuteOdds = this.oddsManager.increment(entry.oneMinuteOdds.displayed);
+      this.raceService.setRace(this.race);
       this.callOddsMethod();
     }
   }
@@ -108,6 +119,7 @@ export class ProgramComponent implements OnInit {
 
   callOddsMethod() {
     this.oddsMethodResults = this.oddsMethod.apply(this.race.entries);
+    this.raceService.setRace(this.race);
   }
 
   oddsMethodItem(entry: Entry) {

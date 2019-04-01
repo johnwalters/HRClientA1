@@ -9,7 +9,7 @@
       {{race.number}}
       <a href="{{externalRaceUrl}}" target="_blank">
         Equibase
-        <i class="fas fa-external-link-alt text-info"></i></a>
+        </a>
     </div>
 
     <div class="col">
@@ -75,13 +75,33 @@
         <td>
           <button *ngIf="!entry.isScratched"
             [ngClass]="{
-              'btn-warning': entry.isTrainerGood,
+              'btn-trainer': entry.isTrainerGood,
               'btn-outline-secondary': !entry.isTrainerGood
             }"
             class="btn btn-sm"
             (click)="toggleTrainer(entry)"
           >
-            <i class="fas fa-male"></i>
+            T
+          </button>
+          <button *ngIf="!entry.isScratched"
+            [ngClass]="{
+              'btn-warning btn-speed': entry.isSpeedGood,
+              'btn-outline-secondary': !entry.isSpeedGood
+            }"
+            class="btn btn-sm ml-1 mr-1"
+            (click)="toggleSpeed(entry)"
+          >
+            S
+          </button>
+          <button *ngIf="!entry.isScratched"
+            [ngClass]="{
+              'btn-class': entry.isClassGood,
+              'btn-outline-secondary': !entry.isClassGood
+            }"
+            class="btn btn-sm"
+            (click)="toggleClass(entry)"
+          >
+            C
           </button>
         </td>
         <td>

@@ -10,7 +10,23 @@ input.race-number {
   width: 2em;
 }
 
+.btn-trainer {
+  color: #212529;
+  background-color: #347C17;
+  border-color: #347C17;
+}
 
+.btn-speed {
+  color: #212529;
+  background-color: #008080;
+  border-color: #008080;
+}
+
+.btn-class {
+  color: #212529;
+  background-color: #4CC417;
+  border-color: #4CC417;
+}
 
 span.post-number.trainer-odds-pick {
   border: 2px solid green;
@@ -26,6 +42,7 @@ span.post-number.odds-pick {
   padding:.5em;
 }
 
+/* saddle cloth colors */
 span.saddle-cloth {
   padding: .25em;
 }
@@ -112,25 +129,3 @@ span.scratched-heading-ucratched {
   color:black;
 }
 
-/*
-1 Red cloth with white #
-2 White cloth with black #
-3 Blue cloth with white #
-4 Yellow cloth with black #
-5Green cloth with white #
-6 Black cloth with gold #
-7 Orange cloth with black #
-8 Pink cloth with black #
-9 Turquoise cloth with black#
-10 Purple cloth with white #
-11 Gray cloth with red #
-12 Lime cloth with black #
-13 Brown cloth with white #
-14 Maroon cloth with yellow #
-15 Khaki cloth with black #
-16 Light Blue (Copen Blue) cloth with red #
-17 Navy cloth with white #
-18 Forest Green cloth with yellow #
-19 Dark Royal Blue (Moonstone) cloth with red #
-20 Fuchsia cloth with yellow #
-21 Light Purple cloth with navy # */
